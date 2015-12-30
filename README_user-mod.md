@@ -7,7 +7,7 @@ Modify an input list of base usernames. New text can be added to the beginning, 
 ```
 
 * **-i [filename]** specifies the input file, and is required. Each line of the input file will be read as an input string.
-* **[mode] [paramter]** specifies whether string mode will be used to add a fixed string to each input line, or if generator mode will be used to add letters or numbers.
+* **[mode] [paramter]** specifies whether string mode will be used to add a fixed string to each input line, or if generator mode will be used to add a range of letters or numbers.
   - **-s [string]** specifies that string mode will be used to add [string] to each line.
     - You can also insert your input lines into the middle of a string by using a '~' in the string parameter (Ex: `-s x~y`, where x is the first part of your substring and y is the second). This eliminates the need to set -p.
   - **-g [format]** specifies that generator mode will be used to generate [format] to add to each line. Formats include:
