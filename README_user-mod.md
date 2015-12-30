@@ -1,5 +1,5 @@
 # user-mod.sh
-Modify an input list of username bases. New text can be added to the beginning, middle, or end of each input line. New text can include a fixed string, or generated text including letters a-z or 1-4 digit numbers. 
+Modify an input list of base usernames. New text can be added to the beginning, middle, or end of each input line. New text can include a fixed string, or generated text including letters a-z or 1-4 digit numbers. 
 
 ## Usage
 ```
