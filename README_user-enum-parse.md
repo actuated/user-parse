@@ -1,4 +1,4 @@
-# user-enum-parse.md
+# user-enum-parse.sh
 Extract usernames from the output of common user enumeration tools. Usernames will be converted to lowercase. Output will be limited to unique values and sorted.
 
 ## Usage
