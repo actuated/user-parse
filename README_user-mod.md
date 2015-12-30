@@ -11,7 +11,7 @@ Modify an input list of base usernames. New text can be added to the beginning, 
   - **-s [string]** specifies that string mode will be used to add [string] to each line.
     - You can also insert your input lines into the middle of a string by using a '~' in the string parameter (Ex: `-s x~y`, where x is the first part of your substring and y is the second). This eliminates the need to set -p.
   - **-g [format]** specifies that generator mode will be used to generate [format] to add to each line. Formats include:
-    - **abc*** - Create letters a-z.
+    - **abc** - Create letters a-z.
     - **n** - Create numbers 0-9.
     - **nn** - Create numbers 00-99.
     - **nnn** - Create numbers 000-999.
