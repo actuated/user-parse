@@ -1,5 +1,5 @@
 # user-parse
-Shell scripts for username parsing. Convert information gathering results into possible usernames, extract results from common user enumeration tools, and modify a list of base usernames by prepending, inserting, or generating a string, letters, or numbers.
+Shell scripts for username parsing. Convert information gathering results into possible usernames, extract results from common user enumeration tools, and modify a list of base usernames by prepending, inserting, or appending a fixed string, or a generated range of letters or numbers.
 
 # Scripts
 Each of these shell scripts will have their own `README_[script-name].md` file for examples and more detailed usage information.
