@@ -1,15 +1,16 @@
 #!/bin/bash
 # user-parse.sh
-# 10/30/2015 by tedr@tracesecurity.com
+# 10/30/2015 by Ted R (http://github.com/actuated)
 # Script to take an input list of names and email addresses, then convert them into unique, lowercase usernames
 # Meant for OSINT results (names, emails, metadata, etc.).
 # See user-enum-parse.sh for extracting usernames from sid2name/rpcclient/smb_enumusers. 
 # Want to add a format? Update the usage, fn_ln_parse and check_format functions at the beginning of the script
 # 10/31/2015 - Added support for domain\username and skipping comments marked by #
 # 11/03/2015 - Changed comment check to be first character only, corrected outfile check
+# 1/1/2016 - Aesthetic change
 
 varDateCreated="10/30/2015"
-varDateLastMod="11/03/2015"
+varDateLastMod="1/1/2016"
 varTempRandom=$(( ( RANDOM % 9999 ) + 1 ))
 varTempFile="temp-user-parse-$varTempRandom.txt"
 if [ -f $varTempFile ]; then rm $varTempFile; fi
@@ -21,16 +22,16 @@ varFormat="null"
 function usage
 {
 echo
-echo "======================[ Username Parser - tedr@tracesecurity.com ]======================="
-echo
-echo "Created $varDateCreated - Last Modified $varDateLastMod"
+echo "=====================[ username parser - Ted R (github: actuated) ]======================"
 echo
 echo "Script to parse an input file to unique, lowercase usernames."
 echo "Intended to be used for public information gathering results."
 echo "Lines can contain emails, domain\\username, or first and last names."
 echo "First and last names will be converted to the format set by -f."
 echo
-echo "=======================================[ Syntax ]========================================"
+echo "Created $varDateCreated, last modified $varDateLastMod."
+echo
+echo "=======================================[ syntax ]========================================"
 echo
 echo -e "Usage: \t./user-parse.sh -i [input file] -f [format] [-o [outout file]]"
 echo -e "Ex: \t./user-parse.sh -i names.txt -f jsmith"
@@ -49,7 +50,7 @@ echo "Optional:"
 echo
 echo -e "\t -o [output file] \t Optional output file, must not exist"
 echo
-echo "========================================[ Info ]========================================="
+echo "========================================[ info ]========================================="
 echo
 echo "Parsing Criteria:"
 echo
@@ -92,8 +93,6 @@ echo
 echo "Notes:"
 echo
 echo -e "\t - If script is stopped or fails, check for temp-user-parse-*.txt"
-echo
-echo "==========[ (c) 2015 - free for personal or commercial use with credit intact ]=========="
 echo
 exit
 }
@@ -178,7 +177,7 @@ check_format
 
 # Display parameters to user for confirmation before starting
 echo
-echo "======================[ Username Parser - tedr@tracesecurity.com ]======================="
+echo "=====================[ username parser - Ted R (github: actuated) ]======================"
 echo
 echo "Reading from $varInFile to convert first and last names to '$varFormat' format."
 echo "Usernames will be retrieved from single strings, emails, and domain\\username."
@@ -188,7 +187,7 @@ echo
 read -p "Press Enter to continue..."
 
 echo
-echo "=====================================[ Conversion ]======================================"
+echo "=====================================[ conversion ]======================================"
 echo
 
 # Process usernames to temp file
@@ -260,7 +259,7 @@ done < $varInFile
 echo
 
 # Display results
-echo "=======================================[ Output ]========================================"
+echo "=======================================[ output ]========================================"
 echo
 cat $varTempFile | sort | uniq | tee $varOutFile
 # Remove temp file

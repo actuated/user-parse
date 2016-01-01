@@ -73,7 +73,7 @@ asmith
 ```
 # ./user-parse.sh -i test.txt -f john_smith
 
-======================[ Username Parser - tedr@tracesecurity.com ]=======================
+=====================[ username parser - Ted R (github: actuated) ]======================
 
 Reading from test.txt to convert first and last names to 'john_smith' format.
 Usernames will be retrieved from single strings, emails, and domain\username.
@@ -81,7 +81,7 @@ See usage/help information (-h) for parsing criteria.
 
 Press Enter to continue...
 
-=====================================[ Conversion ]======================================
+=====================================[ conversion ]======================================
 
 [+] 'john smith' - convert (fn ln) - 'john_smith'
 [+] 'doe, jane' - convert (ln, fn) - 'jane_doe'
@@ -94,7 +94,7 @@ Press Enter to continue...
 [+] 'domain\\username' - extract (domain\user) - 'username'
 [+] 'asmith' - single substring - 'asmith'
 
-=======================================[ Output ]========================================
+=======================================[ output ]========================================
 
 asmith
 edgarallan_poe

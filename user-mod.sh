@@ -1,11 +1,12 @@
 #!/bin/bash
 # user-mod.sh
-# 11/3/2015 by tedr@tracesecurity.com
+# 11/3/2015 by Ted R (http://github.com/actuated)
 # Script to generate additions to possible usernames
 # ie, f/m/l initials, appended numbers
+# 1/1/2016 - Aesthetic change
 
 varDateCreated="11/3/2015"
-varDateLastMod="11/3/2015"
+varDateLastMod="1/1/2016"
 varTempRandom=$(( ( RANDOM % 9999 ) + 1 ))
 varTempFile="temp-user-mod-$varTempRandom.txt"
 if [ -f $varTempFile ]; then rm $varTempFile; fi
@@ -21,13 +22,13 @@ varPos="4"
 function usage
 {
 echo
-echo "=====================[ Username Modifier - tedr@tracesecurity.com ]======================"
-echo
-echo "Created $varDateCreated - Last Modified $varDateLastMod"
+echo "====================[ username modifier - Ted R (github: actuated) ]====================="
 echo
 echo "Script used to add a string, numbers, or letters to possible usernames."
 echo
-echo "=======================================[ Syntax ]========================================"
+echo "Created $varDateCreated, last modified $varDateLastMod."
+echo
+echo "=======================================[ syntax ]========================================"
 echo
 echo "./user-mod.sh -i [input file] [mode [parameter]] -p [position] [-o [outout file]]"
 echo
@@ -50,7 +51,7 @@ echo -e "\t3\t - Add text to the end of each line"
 echo
 echo -e "-o [file] \t - Output file, must not exist"
 echo
-echo "========================================[ Info ]========================================="
+echo "========================================[ info ]========================================="
 echo
 echo "- For -p 1 and 3, each line of the input file will be read as an input string."
 echo "- For -p 2, each line of the input file should contain two space-delimited substrings."
@@ -92,8 +93,6 @@ echo "  separate 'admin-jsmith' accounts for privileged users."
 echo "  - Make your input file the list of jsmith-format names"
 echo "  - Run: ./user-mod.sh -i input.txt -s admin- -p 1 -o output.txt"
 echo "  - Results: 'admin-jsmith', 'admin-x', where x is any other line of the input"
-echo
-echo "==========[ (c) 2015 - free for personal or commercial use with credit intact ]=========="
 echo
 exit
 }
@@ -165,7 +164,7 @@ check_mask
 
 # Display parameters to user for confirmation before starting
 echo
-echo "=====================[ Username Modifier - tedr@tracesecurity.com ]======================"
+echo "====================[ username modifier - Ted R (github: actuated) ]====================="
 echo
 if [ "$varSMode" = "y" ]; then
   if [ "$varPos" = "0" ]; then echo "Inserting lines from $varInFile into '$varStatic'."; fi
@@ -190,7 +189,7 @@ echo
 read -p "Press Enter to continue..."
 
 echo
-echo "====================================[ Modification ]====================================="
+echo "====================================[ modification ]====================================="
 echo
 
 # Process usernames to temp file
@@ -321,7 +320,7 @@ read -p "Press Enter to display results..."
 echo
 
 # Display results
-echo "=======================================[ Output ]========================================"
+echo "=======================================[ output ]========================================"
 echo
 if [ -f $varTempFile ]; then
   cat $varTempFile | sort | uniq > $varOutFile

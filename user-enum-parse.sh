@@ -1,13 +1,14 @@
 #!/bin/bash
 # user-enum-parse.sh
-# 10/31/2015 by tedr@tracesecurity.com
+# 10/31/2015 by Ted R (http://github.com/actuated)
 # Script to take an input file from user enumeration tools and extract usernames
 # 11/1/2015 Revised search expressions and total displays
 # 11/1/2015 Added support for :-delim lines, rewrote grep searches to identify lines
 # 11/3/2015 Noted that msf summary output from smb_lookupsid includes machine accts
+# 1/1/2016 - Aesthetic change
 
 varDateCreated="10/31/2015"
-varDateLastMod="11/01/2015"
+varDateLastMod="1/1/2016"
 varTempRandom=$(( ( RANDOM % 9999 ) + 1 ))
 varTempFile="temp-user-enum-parse-$varTempRandom.txt"
 if [ -f $varTempFile ]; then rm $varTempFile; fi
@@ -19,13 +20,13 @@ varAddDom="n"
 function usage
 {
 echo
-echo "====================[ User Enum Parser - by tedr@tracesecurity.com ]====================="
-echo
-echo "Created $varDateCreated - Last Modified $varDateLastMod"
+echo "====================[ user enum parser by Ted R (github: actuated) ]====================="
 echo
 echo "Script to extract usernames from a file containing user enumeration results."
 echo
-echo "=======================================[ Syntax ]========================================"
+echo "Created $varDateCreated, last modified $varDateLastMod."
+echo
+echo "=======================================[ syntax ]========================================"
 echo
 echo -e "Usage: \t./user-enum-parse.sh -i [input file] [-o [outout file]]"
 echo -e "Ex: \t./user-enum-parse.sh -i results.txt"
@@ -38,7 +39,7 @@ echo "Optional:"
 echo
 echo -e "\t -o [output file] \t Optional output file, must not exist"
 echo
-echo "========================================[ Info ]========================================="
+echo "========================================[ info ]========================================="
 echo
 echo "Parsing Criteria:"
 echo
@@ -72,8 +73,6 @@ echo "Notes:"
 echo
 echo -e "\t - The counts in the Extraction terminal output are not limited to unique names"
 echo -e "\t - If stopped or failed, check for temp-user-enum-parse-*.txt"
-echo
-echo "==========[ (c) 2015 - free for personal or commercial use with credit intact ]=========="
 echo
 exit
 }
@@ -109,7 +108,7 @@ if [ "$varOutFile" = "existerror" ]; then echo; echo "Error: Input file does not
 
 # Display parameters to user for confirmation before starting
 echo
-echo "====================[ User Enum Parser - by tedr@tracesecurity.com ]====================="
+echo "====================[ user enum parser by Ted R (github: actuated) ]====================="
 echo
 echo "Reading from $varInFile for username enumeration results."
 if [ "$varOutFile" != "" ]; then echo; echo "Output will be written to $varOutFile."; fi
@@ -117,7 +116,7 @@ echo
 read -p "Press Enter to continue..."
 
 echo
-echo "=====================================[ Extraction ]======================================"
+echo "=====================================[ extraction ]======================================"
 echo
 
 # Process usernames to temp file
@@ -195,7 +194,7 @@ echo
 read -p "Press Enter to display results..."
 echo
 # Display results
-echo "=======================================[ Output ]========================================"
+echo "=======================================[ output ]========================================"
 echo
 cat $varTempFile | grep -v '\$' | sort | uniq | tee $varOutFile
 # Remove temp file

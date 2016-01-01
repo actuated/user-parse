@@ -65,13 +65,13 @@ duplicate:x:2:2:bin:/bin:/bin/sh
 ```
 # ./user-enum-parse.sh -i test.txt 
 
-====================[ User Enum Parser - by tedr@tracesecurity.com ]=====================
+====================[ user enum parser by Ted R (github: actuated) ]=====================
 
 Reading from test.txt for username enumeration results.
 
 Press Enter to continue...
 
-=====================================[ Extraction ]======================================
+=====================================[ extraction ]======================================
 
 20 Found (13 Unique Non-Machine Accts) in 27 Lines Read
 
@@ -80,7 +80,7 @@ RPC Client: 3         SMB_LookupSID: 3
 
 Press Enter to display results...
 
-=======================================[ Output ]========================================
+=======================================[ output ]========================================
 
 duplicate
 hash1
