@@ -8,11 +8,13 @@ Public information gathering might provide details like first and last names for
 
 * **-i [filename]** specifies the input file, and is required. Each line of the input file will be checked against the parsing criteria described below.
 * **-f [format]** specifies the mask that will be used when converting first and last names to possible usernames. Supported [format] values are:
-  - **jsmith**
   - **john.smith**
   - **john_smith**
+  - **john7s** (first 7 characters of first name + last initial)
   - **johns**
   - **johnsmith**
+  - **jsmith**
+  - **jsmith7** (first initial + first 7 characters of last name)
 * **-o [filename]** specifies an output file, which is not required.
 
 ## Parsing Criteria

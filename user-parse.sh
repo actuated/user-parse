@@ -7,7 +7,7 @@
 # Want to add a format? Update the usage, fn_ln_parse and check_format functions at the beginning of the script
 # 10/31/2015 - Added support for domain\username and skipping comments marked by #
 # 11/03/2015 - Changed comment check to be first character only, corrected outfile check
-# 1/1/2016 - Aesthetic change
+# 1/1/2016 - Aesthetic changes, also added john7s and jsmith7 formats
 
 varDateCreated="10/30/2015"
 varDateLastMod="1/1/2016"
@@ -40,11 +40,13 @@ echo "Required Parameters:"
 echo
 echo -e "\t -i [input file] \t Input file, must exist"
 echo -e "\t -f [format] \t\t Output username format, must match format options below"
-echo -e "\t\t jsmith"
 echo -e "\t\t john.smith"
 echo -e "\t\t john_smith"
+echo -e "\t\t john7s \t First 7 characters of first name + Last initial"
 echo -e "\t\t johns"
 echo -e "\t\t johnsmith"
+echo -e "\t\t jsmith"
+echo -e "\t\t jsmith7 \t First initial + First 7 characters of last name"
 echo
 echo "Optional:"
 echo
@@ -102,6 +104,8 @@ function fn_ln_parse
 # Cut FI and LI from FN and LN
       varLI=$(echo "$varLN" | cut -c1)
       varFI=$(echo "$varFN" | cut -c1)
+      varLN7=$(echo "$varLN" | cut -c1-7)
+      varFN7=$(echo "$varFN" | cut -c1-7)
 # Process based on selected name output format
       if [ "$varFormat" = "jsmith" ]; then
         varLineOut="$varFI$varLN"
@@ -113,13 +117,18 @@ function fn_ln_parse
         varLineOut="$varFN$varLI"
       elif [ "$varFormat" = "johnsmith" ]; then
         varLineOut="$varFN$varLN"
+      elif [ "$varFormat" = "jsmith7" ]; then
+        varLineOut="$varFI$varLN7"
+      elif [ "$varFormat" = "john7s" ]; then
+        varLineOut="$varFN7$varLI"
       fi
 }
 
 function check_format
 {
-if [ "$varFormat" != "jsmith" ] && [ "$varFormat" != "john.smith" ] && [ "$varFormat" != "john_smith" ] && [ "$varFormat" != "johns" ] && [ "$varFormat" != "johnsmith" ] ; then
-  echo; echo "Error: Invalid format type supplied."; usage; fi
+if [ "$varFormat" != "jsmith" ] && [ "$varFormat" != "john.smith" ] && [ "$varFormat" != "john_smith" ] && [ "$varFormat" != "johnsmith" ] && [ "$varFormat" != "jsmith7" ] && [ "$varFormat" != "john7s" ] && [ "$varFormat" != "johns" ]; then
+  echo; echo "Error: Invalid format type supplied."; usage
+fi
 }
 
 # Check input for necessary length
